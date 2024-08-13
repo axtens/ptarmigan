@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ptarmigan": {
+      "commandName": "Project",
+      "commandLineArgs": "-sql \"C:\\Users\\bugma\\Source\\Repos\\Present\\Scripts\\ptarmigan\\northwind.db|\""
+    }
+  }
+}
