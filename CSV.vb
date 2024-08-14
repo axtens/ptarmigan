@@ -83,11 +83,11 @@ Namespace BODB
             For Each row As DataRow In dt.Rows
                 Dim line As New List(Of String)
                 For Each name As String In fieldNames
-                    line.Add(name + "^" + row.Item(name))
+                    line.Add($"[{name}]{row.Item(name)}")
                 Next
-                result.Add(String.Join("~", line.ToArray))
+                result.Add(String.Join("^", line.ToArray))
             Next
-            Return String.Join("`", result.ToArray)
+            Return String.Join("~", result.ToArray)
         End Function
 
         Private Function GetAllRecordsWhereFieldEqualsValue(dt As DataTable, fieldNames As List(Of String), fieldName As String, value As String)
@@ -96,13 +96,13 @@ Namespace BODB
                 Dim line As New List(Of String)
                 If row.Item(fieldName) = value Then
                     For Each name As String In fieldNames
-                        line.Add(name + "^" + row.Item(name))
+                        line.Add($"[{name}]{row.Item(name)}")
                     Next
-                    result.Add(String.Join("~", line.ToArray))
+                    result.Add(String.Join("^", line.ToArray))
                     Exit For
                 End If
             Next
-            Return String.Join("`", result.ToArray)
+            Return String.Join("~", result.ToArray)
         End Function
     End Module
 

@@ -3,7 +3,7 @@ Imports System.Reflection
 
 Module Program
     Sub Main(args As String())
-        If args.Count < 2 Then
+        If args.Length < 2 Then
             Console.WriteLine($"{AssemblyName.GetAssemblyName(Assembly.GetExecutingAssembly().Location).Name} -csv|-sql <string>")
             End
         End If

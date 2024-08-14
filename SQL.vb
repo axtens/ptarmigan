@@ -102,14 +102,14 @@ Namespace BODB
                     Dim name As String = reader.GetName(i)
                     Dim valu As String = reader.GetString(i)
                     'If name = fieldName AndAlso valu = value Then
-                    row.Add($"{name}^{valu}")
+                    row.Add($"[{name}]{valu}")
                     'End If
                 Next
-                result.Add(String.Join("~", row.ToArray()))
+                result.Add(String.Join("^", row.ToArray()))
                 row.Clear()
             Loop
             reader.Close()
-            Return Join(result.ToArray(), "`")
+            Return Join(result.ToArray(), "~")
         End Function
 
         Private Function GetAllValuesOfFieldsInTable(connection As SqliteConnection, tableName As String, fieldNames As List(Of String)) As String
@@ -124,14 +124,14 @@ Namespace BODB
                     Dim name As String = reader.GetName(i)
                     Dim valu As String = reader.GetString(i)
                     'If name = fieldName AndAlso valu = value Then
-                    row.Add($"{name}^{valu}")
+                    row.Add($"[{name}]{valu}")
                     'End If
                 Next
-                result.Add(String.Join("~", row.ToArray()))
+                result.Add(String.Join("^", row.ToArray()))
                 row.Clear()
             Loop
             reader.Close()
-            Return Join(result.ToArray(), "`")
+            Return Join(result.ToArray(), "~")
         End Function
 
         Private Function GetAllFieldNamesInTable(connection As SqliteConnection, tableName As String) As List(Of String)
@@ -155,12 +155,12 @@ Namespace BODB
                 For i = 0 To reader.FieldCount - 1
                     Dim name As String = reader.GetName(i)
                     Dim valu As String = reader.GetString(i)
-                    row.Add($"{name}^{valu}")
+                    row.Add($"[{name}]{valu}")
                 Next
-                result.Add(String.Join("~", row.ToArray()))
+                result.Add(String.Join("^", row.ToArray()))
             Loop
             reader.Close()
-            Return Join(result.ToArray(), "`")
+            Return Join(result.ToArray(), "~")
         End Function
 
         Private Function GetListOfTables(connection As SqliteConnection) As List(Of String)
